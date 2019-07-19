@@ -1,0 +1,2 @@
+*/1 * * * * root python3 /src/hello.py >> /var/log/cron.log
+# Waiting for Shishkebabs!
