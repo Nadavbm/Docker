@@ -1,5 +1,7 @@
 FROM php:5.5-cli
 
+MAINTAINER Nadav Ben Mazia nadavbm@outlook.com
+
 RUN apt-get update && apt-get install -y --no-install-recommends cron
 
 RUN mkdir -p /usr/src/phpcron/
