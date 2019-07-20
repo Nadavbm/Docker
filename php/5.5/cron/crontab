@@ -1,0 +1,10 @@
+*/1 * * * * su -c 'php /usr/src/phpcron/cron1.php >> /var/log/cron.log'
+*/2 * * * * su -c 'php /usr/src/phpcron/cron2.php >> /var/log/cron.log'
+*/3 * * * * su -c 'php /usr/src/phpcron/cron3.php >> /var/log/cron.log'
+*/1 * * * * php /usr/src/phpcron/cron1.php >> /var/log/cron.log
+*/2 * * * * php /usr/src/phpcron/cron2.php >> /var/log/cron.log
+*/3 * * * * php /usr/src/phpcron/cron3.php >> /var/log/cron.log
+*/1 * * * * root php /usr/src/phpcron/cron1.php >> /var/log/cron.log
+*/2 * * * * root php /usr/src/phpcron/cron2.php >> /var/log/cron.log
+*/3 * * * * root php /usr/src/phpcron/cron3.php >> /var/log/cron.log
+# Run "docker exec -it <containerID> sh -c "tail -f /var/log/cron.log"
