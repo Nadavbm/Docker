@@ -1,0 +1,58 @@
+version: '3.2'
+services:
+## Web services of the app with php and apache
+  web:
+#    hostname: mapphp.local
+    build: './web'
+## Build with a Dockerfile
+#      context: /
+#      dockerfile: .web/Dockerfile
+# Image reference - use build -t
+#    image: mapphp.local
+    ports:
+        - 80:80
+# Local volume of docker host
+    volumes:
+      - .:/data/mapphp/web
+# DB service will start first
+    depends_on:
+      - db
+    links:
+      - db
+
+# DB service mysql5.7
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 3306:3306
+# Local volume of docker host
+    volumes:
+      - .:/data/mapphp/sql
+## Set root password and create first db
+    environment:
+      MYSQL_ROOT_PASSWORD: Pa$$w0rd
+      MYSQL_DATABASE: mapphp
+      MYSQL_USER: mapphp
+      MYSQL_PASSWORD: Pa$$w0rd      
+
+
+
+
+
+#    networks:
+#      - backend
+
+##Docker Networks
+#networks:
+#  frontend:
+#      driver: bridge
+#  backend:
+#      driver: bridge
+##Volumes
+#volumes:
+#  dbdata:
+#    driver: local
+
+
