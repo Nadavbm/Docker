@@ -68,6 +68,7 @@ docker ps -a | grep mysql | cut -d' ' -f1
 # Connect to container bash
 docker exec -it <containerId> bash
 docker exec -it <containerId> sh -c "ls -lash /usr"
+docker exec -it $( docker ps | awk '{print $1}' | tail -1 ) /bin/sh
 
 # Running SQL queries directly on MySQL container
 docker exec -i <containerId> sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "USE dbName; show tables;"'
