@@ -74,6 +74,15 @@ docker exec -i <containerId> sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -
 docker exec -i <containerId> sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "select * from dbName.dbTable;"'
 docker exec -i <containerId> sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "INSERT INTO dbName.dbTable (username, passwordHash, status) VALUES ('nadav', '$2y$08$WqD4JZHznekyXxI9wvxSFuYS5Lvs0CfbVGEmN.LfHRgHbLXhuTLA.', 71);"'
 
+# Docker system
+docker system prune	
+docker image prune
+docker image prune -a
+docker container prune --filter "until=24h"
+docker volume prune --filter "label!=keep"
+docker network prune --filter "until=24"
+docker system prune --volumes 
+
 # Docker Compose Cheats:
 docker-compose start
 docker-compose stop
